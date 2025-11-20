@@ -17,9 +17,14 @@ function App() {
 
   return (
     <div
-  className="w-screen min-h-screen relative text-white"
-  style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-
+  className="w-screen h-screen relative text-white overflow-hidden"
+  style={{
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: 'cover',         
+    backgroundPosition: 'center',    
+    backgroundRepeat: 'no-repeat',
+    minHeight: '100vh',              
+  }}
       onClick={() =>
         isFinished ? audioRef1.current?.play() : audioRef.current?.play()
       }
@@ -35,9 +40,9 @@ function App() {
       {/* Logo + Title */}
       <div className="absolute top-[120px] left-1/2 -translate-x-1/2 text-center px-4 pointer-events-none">
         <img src={logo} className="w-24 sm:w-32 md:w-40 lg:w-48 mb-4 mx-auto" />
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold drop-shadow-xl">
-          Saint Martin Tour
-        </h1>
+        <h1 className="text-2xl  md:text-7xl font-extrabold drop-shadow-xl whitespace-wrap">
+  Saint Martin Tour
+</h1>
       </div>
 
       {/* Countdown Card – bottom right */}
