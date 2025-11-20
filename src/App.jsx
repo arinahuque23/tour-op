@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Confetti from "react-confetti";
 import logo from "./assets/logo.png";
 
+import bgImage from './assets/Edited.jpg';
+
 function App() {
   const targetDate = new Date("December 12, 2025 22:00:00 GMT+0600").toISOString();
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
@@ -15,7 +17,9 @@ function App() {
 
   return (
     <div
-      className="bg-hero bg-cover bg-center bg-no-repeat w-screen min-h-screen relative text-white overflow-hidden"
+  className="w-screen min-h-screen relative text-white"
+  style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+
       onClick={() =>
         isFinished ? audioRef1.current?.play() : audioRef.current?.play()
       }
@@ -24,15 +28,9 @@ function App() {
       {isFinished && <Confetti width={window.innerWidth} height={window.innerHeight} />}
 
       {/* Audio */}
-      <audio
-        ref={isFinished ? audioRef1 : audioRef}
-        autoPlay
-        loop
-        preload="auto"
-        className="hidden"
-      >
-        <source src={audio1} type="audio/mp3" />
-      </audio>
+      <audio ref={audioRef} autoPlay loop preload="auto" className="hidden">
+  <source src={audio1} type="audio/mp3" />
+</audio>
 
       {/* Logo + Title */}
       <div className="absolute top-[120px] left-1/2 -translate-x-1/2 text-center px-4 pointer-events-none">
